@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prachi - Growth & Marketing Expert</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-50px, -50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: #fff;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            background: #0f0f0f;
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: #667eea;
+            box-shadow: 0 10px 40px rgba(102,126,234,0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .expertise-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .expertise-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-10px);
+            border-color: #667eea;
+            box-shadow: 0 20px 60px rgba(102,126,234,0.3);
+        }
+
+        .expertise-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .expertise-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .expertise-card p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .results {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 5rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .result-item {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .result-item:hover {
+            background: rgba(255,255,255,0.15);
+            transform: scale(1.05);
+        }
+
+        .result-metric {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .brands {
+            padding: 5rem 2rem;
+            background: #0f0f0f;
+        }
+
+        .brand-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .brand-tag {
+            padding: 1rem 2rem;
+            background: rgba(102,126,234,0.1);
+            border: 1px solid rgba(102,126,234,0.3);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .brand-tag:hover {
+            background: rgba(102,126,234,0.2);
+            transform: translateY(-3px);
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-button {
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(102,126,234,0.5);
+        }
+
+        .testimonial {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            padding: 2rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>I Build Brands That Scale</h1>
+            <p>Full-stack growth strategist turning startups into market leaders across US, UK, UAE & India</p>
+            <a href="#contact" class="cta-button">Let's Talk Growth →</a>
+        </div>
+    </section>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">500%</div>
+            <div class="stat-label">Average Revenue Growth</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Brands Scaled</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Markets Conquered</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">$5M+</div>
+            <div class="stat-label">Revenue Generated</div>
+        </div>
+    </div>
+
+    <section class="section">
+        <h2 class="section-title">What I Do</h2>
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <div class="expertise-icon">🚀</div>
+                <h3>Growth Strategy</h3>
+                <p>Zero to seven-figure revenue roadmaps. I architect growth systems that scale, combining paid acquisition, organic channels, and conversion optimization.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">💎</div>
+                <h3>Brand Building</h3>
+                <p>From positioning to visual identity, I craft brands that command premium prices and create cult-like customer loyalty.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">📈</div>
+                <h3>Performance Marketing</h3>
+                <p>Meta, Google, TikTok - I run campaigns that print money. Expertise in D2C, wellness, beauty, and lifestyle brands.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">⚡</div>
+                <h3>Revenue Operations</h3>
+                <p>CRM optimization, customer journey mapping, and retention systems that maximize LTV and turn customers into evangelists.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">🎯</div>
+                <h3>Market Expansion</h3>
+                <p>Successfully launched brands across US, UK, UAE, and India. I understand cultural nuances and local market dynamics.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">🔥</div>
+                <h3>Launch Strategy</h3>
+                <p>0-1 specialist. Built salons from scratch, launched D2C brands, and created market entry strategies that make waves.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="results">
+        <h2 class="section-title" style="color: #fff;">Results That Speak</h2>
+        <div class="results-grid">
+            <div class="result-item">
+                <div class="result-metric">127%</div>
+                <p>Increase in brand awareness for wellness brand launch</p>
+            </div>
+            <div class="result-item">
+                <div class="result-metric">$2.3M</div>
+                <p>Revenue generated for D2C supplement brand in 18 months</p>
+            </div>
+            <div class="result-item">
+                <div class="result-metric">3.2x</div>
+                <p>ROAS achieved on paid campaigns across Meta & Google</p>
+            </div>
+            <div class="result-item">
+                <div class="result-metric">85%</div>
+                <p>Customer retention rate for beauty brand optimization</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="brands">
+        <h2 class="section-title">Industries Conquered</h2>
+        <div class="brand-tags">
+            <div class="brand-tag">🎁 Luxury Gifting</div>
+            <div class="brand-tag">💊 Supplements & Wellness</div>
+            <div class="brand-tag">💅 Beauty & Salons</div>
+            <div class="brand-tag">💎 Jewelry & Accessories</div>
+            <div class="brand-tag">🏋️ Fitness & Health</div>
+            <div class="brand-tag">🛍️ D2C E-commerce</div>
+            <div class="brand-tag">🌍 International Expansion</div>
+            <div class="brand-tag">📱 Digital Products</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">About Me</h2>
+        <div style="max-width: 900px; margin: 0 auto; line-height: 1.9; font-size: 1.15rem; opacity: 0.9;">
+            <p style="margin-bottom: 2rem; font-size: 1.3rem; font-weight: 600; text-align: center;">I'm not your typical marketer. I'm the person brands call when they're tired of agencies that overpromise and underdeliver.</p>
+            
+            <p style="margin-bottom: 1.5rem;">For the past 5+ years, I've been deep in the trenches building brands from zero—salon chains from scratch, supplement lines that hit 7-figures, jewelry brands that became Instagram sensations, and wellness companies that scaled across continents.</p>
+            
+            <p style="margin-bottom: 1.5rem;">I started in performance marketing, cutting my teeth on campaigns that generated millions in revenue for beauty and wellness brands. Then I moved into jewelry and lifestyle brands, where I helped scale businesses through strategic positioning and growth operations. But I realized my real value wasn't just executing—it was architecting entire growth systems.</p>
+            
+            <p style="margin-bottom: 1.5rem;">So I went solo. Now I work with founders who are done playing small. I've launched brands in the US, UK, UAE, Egypt, and India. I've built everything from go-to-market strategies to complete brand identities. I've managed millions in ad spend and built organic engines that generate consistent revenue.</p>
+            
+            <p style="margin-bottom: 1.5rem;">What makes me different? I don't just do marketing—I understand business. I think like a founder. I know when to brand-build and when to performance-market. I understand unit economics, customer psychology, market positioning, and how to build systems that scale without breaking.</p>
+            
+            <p style="font-weight: 600; font-size: 1.2rem;">I'm obsessed with growth. Not vanity metrics—real, sustainable, profitable growth. And I'm exceptionally good at it.</p>
+        </div>
+    </section>
+
+    <section class="section" style="background: rgba(102,126,234,0.05); padding: 5rem 2rem; margin: 3rem 0;">
+        <h2 class="section-title">My Approach</h2>
+        <div style="max-width: 800px; margin: 0 auto; line-height: 2; font-size: 1.2rem; opacity: 0.9;">
+            <p style="margin-bottom: 2rem;">I'm not a consultant who sends you a deck and disappears. I'm a growth partner who gets in the trenches with you.</p>
+            <p style="margin-bottom: 2rem;"><strong>My process:</strong> Deep market research → Competitive intelligence → Brand positioning → Multi-channel strategy → Execution → Scale → Optimize → Dominate.</p>
+            <p style="margin-bottom: 2rem;">I start by understanding your business at a molecular level. What's your actual CAC? What's the real LTV? Where are the bottlenecks? Then I build a custom growth engine—paid + organic + retention—that compounds over time.</p>
+            <p>I've built growth engines for brands in the US, UK, UAE, Egypt, and India. I understand what works in mature markets vs. emerging ones. I know how to stretch budgets and how to deploy capital for maximum impact.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Content & Social Media Strategy</h2>
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <div class="expertise-icon">📱</div>
+                <h3>Social-First Branding</h3>
+                <p>Building brands that go viral isn't luck—it's strategy. I create content systems that turn followers into customers and customers into advocates across Instagram, TikTok, and LinkedIn.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">✍️</div>
+                <h3>Content Architecture</h3>
+                <p>From brand voice development to content calendars that convert, I build content engines that educate, entertain, and sell—all while building genuine community.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">🎬</div>
+                <h3>Creator Partnerships</h3>
+                <p>Influencer marketing that actually ROIs. I identify, negotiate, and manage creator partnerships that drive authentic engagement and measurable revenue.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">💬</div>
+                <h3>Community Building</h3>
+                <p>I build communities that sell themselves. From Discord to WhatsApp groups to exclusive memberships—I create spaces where your customers become your best marketers.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">📊</div>
+                <h3>Data-Driven Content</h3>
+                <p>Every post, reel, and story is tracked. I use analytics to double down on what works and kill what doesn't—turning content into a predictable revenue channel.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">🎯</div>
+                <h3>Omnichannel Strategy</h3>
+                <p>Your customers aren't on just one platform. I build cohesive strategies that work across Instagram, TikTok, LinkedIn, Twitter, YouTube—everywhere your audience lives.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <h2>Ready to 10x Your Growth?</h2>
+        <p>I work with ambitious founders and brands ready to scale. If you're doing under $100K/month and want to hit $1M+, let's talk.</p>
+        <p style="font-size: 1.5rem; font-weight: 700; margin: 2rem 0;">Investment: Starting at $8,000/month</p>
+        <div class="contact-info">
+            <a href="mailto:your.email@example.com" class="contact-button">
+                📧 Book a Strategy Call
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" class="contact-button" target="_blank">
+                💼 View LinkedIn
+            </a>
+        </div>
+        <div style="max-width: 1000px; margin: 4rem auto 0;">
+            <div class="testimonial" style="margin-bottom: 2rem;">
+                <p class="testimonial-text">"Working with Prachi transformed our business. We went from $50K to $800K in revenue in 14 months. Her strategic thinking and execution capabilities are unmatched."</p>
+                <p style="margin-top: 1rem; font-weight: 700; opacity: 0.7;">— Sarah Mitchell, Founder, Wellness Brand (UAE)</p>
+            </div>
+            
+            <div class="testimonial" style="margin-bottom: 2rem;">
+                <p class="testimonial-text">"Most marketers talk strategy. Prachi executes. She rebuilt our entire growth engine from the ground up—new positioning, new creative, new funnels. ROAS went from 1.8x to 4.2x in 3 months. She's worth every penny."</p>
+                <p style="margin-top: 1rem; font-weight: 700; opacity: 0.7;">— James Chen, CEO, D2C Supplements (US)</p>
+            </div>
+            
+            <div class="testimonial" style="margin-bottom: 2rem;">
+                <p class="testimonial-text">"We hired three agencies before finding Prachi. She did in 6 weeks what they couldn't do in 6 months. Our Instagram went from 5K to 85K followers, but more importantly—our revenue tripled. She understands how to build brands that actually sell."</p>
+                <p style="margin-top: 1rem; font-weight: 700; opacity: 0.7;">— Aisha Rahman, Founder, Jewelry Brand (UK)</p>
+            </div>
+            
+            <div class="testimonial" style="margin-bottom: 2rem;">
+                <p class="testimonial-text">"Prachi doesn't just know marketing—she thinks like a business owner. She spotted opportunities in our funnel we'd been blind to for months. Fixed our CAC problem, improved retention by 60%, and helped us raise our Series A."</p>
+                <p style="margin-top: 1rem; font-weight: 700; opacity: 0.7;">— Vikram Patel, Co-Founder, Beauty Tech (India)</p>
+            </div>
+            
+            <div class="testimonial" style="margin-bottom: 2rem;">
+                <p class="testimonial-text">"I was skeptical about hiring outside our market, but Prachi understood our US customers better than local agencies. She built our entire go-to-market strategy and we hit $1M in our first 9 months. Absolute game-changer."</p>
+                <p style="margin-top: 1rem; font-weight: 700; opacity: 0.7;">— Marcus Johnson, Founder, Lifestyle Brand (US)</p>
+            </div>
+            
+            <div class="testimonial">
+                <p class="testimonial-text">"Best investment we made. Prachi took our struggling gift brand and completely repositioned it. New target audience, new creative direction, new channels. We went from barely breaking even to 40% profit margins in 5 months."</p>
+                <p style="margin-top: 1rem; font-weight: 700; opacity: 0.7;">— Emma Thompson, Director, Luxury Gifting (UAE)</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.expertise-card, .stat-card, .result-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
